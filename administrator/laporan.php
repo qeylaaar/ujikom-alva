@@ -1,4 +1,9 @@
-
+<?php 
+session_start();
+if($_SESSION['level']==""){
+    header("location:../login.php?info=login");
+}
+?>
 <!DOCTYPE html>
 <!--
 This is a starter template page. Use this page to start your new project from
@@ -51,8 +56,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <ul class="order-1 order-md-3 navbar-nav navbar-no-expand ml-auto">
         <!-- Messages Dropdown Menu -->
         <li class="nav-item dropdown">
-          <a class="nav-link" href="login.php">
-            <i class="fas fa-user"></i> Login
+          <a class="nav-link" href="../logout.php">
+            <i class="fas fa-user"></i> Logout
           </a>
         </li>
       </ul>

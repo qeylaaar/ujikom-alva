@@ -20,14 +20,14 @@
   <!-- /.login-logo -->
   <div class="card card-outline card-primary">
     <div class="card-header text-center">
-      <a href="assets/index2.html" class="h1">Login</a>
+      <a href="index.php" class="h1">Login</a>
     </div>
     <div class="card-body">
       <p class="login-box-msg">Silahkan Login Terlebih dahulu :)</p>
 
-      <form action="assets/index3.html" method="post">
+      <form action="cek_login.php" method="post">
         <div class="input-group mb-3">
-          <input type="text" class="form-control" placeholder="Username">
+          <input type="text" name="username" class="form-control" placeholder="Username">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-user"></span>
@@ -35,7 +35,7 @@
           </div>
         </div>
         <div class="input-group mb-3">
-          <input type="password" class="form-control" placeholder="Password">
+          <input type="password" name="password" class="form-control" placeholder="Password">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-lock"></span>
@@ -48,7 +48,7 @@
           </div>
           <!-- /.col -->
           <div class="col-4">
-            <a href="index.php"><button type="submit" class="btn btn-primary btn-block">Masuk</button></a>
+            <button type="submit" class="btn btn-primary btn-block">Masuk</button>
           </div>
           <!-- /.col -->
         </div>

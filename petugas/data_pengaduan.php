@@ -36,10 +36,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <!-- Left navbar links -->
         <ul class="navbar-nav">
           <li class="nav-item">
-            <a href="index.php" class="nav-link">Home</a>
+            <a href="beranda.php" class="nav-link">Home</a>
           </li>
           <li class="nav-item">
-            <a href="pengaduan.php" class="nav-link">Data Pengaduan</a>
+            <a href="data_pengaduan.php" class="nav-link">Data Pengaduan</a>
           </li>
         </ul>
       </div>
@@ -80,7 +80,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
             <div class="card card-primary card-outline">
               <div class="card-header">
-                <h5 class="card-title m-0">Pengaduan</h5>
+                <h5 class="card-title m-0">Verifikasi dan Isi Tanggapan</h5>
               </div>
               <div class="card-body"> 
                 <table class="table table-bordered">
@@ -112,18 +112,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 </table>
               </div>
             </div>
-            <div class="card-footer">
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-tambah">
-                  Tambah Pengaduan
-                </button>
-            </div>
           </div>
 
           <div class="modal fade" id="modal-edit">
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
-              <h4 class="modal-title">Isi Pengaduan</h4>
+              <h4 class="modal-title">Verifikasi</h4>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
@@ -149,7 +144,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             </div>
             <div class="modal-footer justify-content-between">
               <button type="button" class="btn btn-default" data-dismiss="modal">Keluar</button>
-              <button type="button" class="btn btn-primary">Simpan Pengaduan</button>
+              <button type="button" class="btn btn-primary">Simpan</button>
             </div>
           </div>
         </div>
@@ -159,33 +154,31 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
-              <h4 class="modal-title">Tambah Pengaduan</h4>
+              <h4 class="modal-title">Verifikasi dan Isi Tanggapan</h4>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
             <div class="modal-body">
             <form method="post" action="simpan_pengaduan">
-                <div class="card-body">
+              <div class="card-body">
                   <div class="form-group">
-                      <label>Isi Laporan</label>
+                        <label>Verifikasi</label>
+                        <select class="form-control">
+                          <option>Proses</option>
+                          <option>Selesai</option>
+                        </select>
+                  </div>
+                  <div class="form-group">
+                      <label>Isi Tanggapan</label>
                       <textarea class="form-control" name="laporan" rows="3" placeholder="Enter ..."></textarea>
-                  </div>
-                  <div class="form-group">
-                    <label for="exampleInputFile">Upload Foto</label>
-                    <div class="input-group">
-                      <div class="custom-file">
-                        <input type="file" name="foto" class="custom-file-input" id="exampleInputFile">
-                        <label class="custom-file-label" for="exampleInputFile">Choose file</label>
-                      </div>
                     </div>
-                  </div>
                 </div>
               </form>
             </div>
             <div class="modal-footer justify-content-between">
               <button type="button" class="btn btn-default" data-dismiss="modal">Keluar</button>
-              <button type="button" class="btn btn-primary">Simpan Pengaduan</button>
+              <button type="button" class="btn btn-primary">Simpan</button>
             </div>
           </div>
         </div>

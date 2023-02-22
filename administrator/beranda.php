@@ -41,6 +41,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
           <li class="nav-item">
             <a href="data_pengaduan.php" class="nav-link">Data Pengaduan</a>
           </li>
+          <li class="nav-item">
+            <a href="laporan.php" class="nav-link">Generate Laporan</a>
+          </li>
         </ul>
       </div>
 

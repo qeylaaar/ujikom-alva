@@ -41,6 +41,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
           <li class="nav-item">
             <a href="data_pengaduan.php" class="nav-link">Data Pengaduan</a>
           </li>
+          <li class="nav-item">
+            <a href="data_pengaduan.php" class="nav-link">Generate Laporan</a>
+          </li>
         </ul>
       </div>
 
@@ -80,7 +83,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
             <div class="card card-primary card-outline">
               <div class="card-header">
-                <h5 class="card-title m-0">Verifikasi dan Isi Tanggapan</h5>
+                <h5 class="card-title m-0">Generate Laporan</h5>
+                <div class="card-tools">
+                    <div class="input-group-append">
+                        <a href="" class="btn btn-primary btn-sm"><i class="fas fa-print"> Print</i></a>
+                    </div>
+                </div>
               </div>
               <div class="card-body"> 
                 <table class="table table-bordered">
@@ -92,7 +100,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
                       <th style="width: 200px">Tanggal Pengaduan</th>
                       <th>Isi Laporan</th>
                       <th>Status Verifikasi</th>
-                      <th style="width: 120px">Aksi</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -103,10 +110,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
                       <td>Fix and squish bugs</td>
                       <td>Fix and squish bugs</td>
                       <td><span class="badge bg-success">Selesai</span></td>
-                      <td>
-                        <a href="" class="btn btn-info" data-toggle="modal" data-target="#modal-tambah"><i class="fas fa-edit"></i></a>
-                        <!--<a href="" class="btn btn-danger"><i class="fas fa-trash"></i></a>-->
-                      </td>
                     </tr>
                   </tbody>
                 </table>

@@ -107,16 +107,19 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     <?php
                     $no = 1;
                     include '../koneksi.php';
-                    $catatan = mysqli_query($koneksi, "SELECT * FROM pengaduan");
-                    while($row = mysqli_fetch_array($catatan)){ 
+                    $catatan = mysqli_query($koneksi, "SELECT * FROM pengaduan INNER JOIN tanggapan ON pengaduan.id_pengaduan = tanggapan.id_pengaduan");
+                    while($d = mysqli_fetch_array($catatan)) 
                     ?>
                     <tr>
                       <td><?php echo $no++; ?></td>
                       <td><img src="<?=$d['foto']?>"></td>
-                      <td>Fix and squish bugs</td>
-                      <td>Fix and squish bugs</td>
-                      <td>Fix and squish bugs</td>
+                      <td><?=$d['isi_laporan']?></td>
+                      <td><?=$d['tgl_pengaduan']?></td>
+                      <td><?=$d['tanggapan']?></td>
                       <td><span class="badge bg-success">Selesai</span></td>
+                      <?php
+                      if($d['stat'] == '0'){
+                      ?>
                       <td>
                         <a href="" class="btn btn-info" data-toggle="modal" data-target="#modal-tambah"><i class="fas fa-edit"></i></a>
                         <!--<a href="" class="btn btn-danger"><i class="fas fa-trash"></i></a>-->

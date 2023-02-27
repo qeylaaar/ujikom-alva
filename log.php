@@ -20,44 +20,71 @@
     <!-- /.login-logo -->
     <div class="card card-outline card-primary">
       <div class="card-header text-center">
-        <a href="assets/index2.html" class="h1">Daftar</a>
+        <a href="login.php" class="h1">LOGIN</a>
       </div>
       <div class="card-body">
         <p class="login-box-msg">Aplikasi Pengaduan Masyarakat</p>
-
-        <form action="simpan_daftar.php" method="post">
-          <div class="input-group mb-3">
-            <input type="text" name="nik" class="form-control" placeholder="NIK">
-            <div class="input-group-append">
+        <?php 
+        if(isset($_GET['pesan'])){
+        if($_GET['pesan'] == "gagal"){ ?>
+        <div class="col-md-12">
+          <div class="card bg-gradient-warning">
+            <!-- /.card-header -->
+            <div class="card-body text-center">
+              Login gagal! username dan password salah!
             </div>
+            <!-- /.card-body -->
           </div>
-          <div class="input-group mb-3">
-            <input type="text" name="nama" class="form-control" placeholder="Nama">
-            <div class="input-group-append">
+          <!-- /.card -->
+        </div>
+        <?php } else if($_GET['pesan'] == "logout"){ ?>
+        <div class="col-md-12">
+          <div class="card bg-gradient-success">
+            <!-- /.card-header -->
+            <div class="card-body text-center">
+              Anda telah berhasil logout
             </div>
+            <!-- /.card-body -->
           </div>
+          <!-- /.card -->
+        </div>
+        <?php }else if($_GET['pesan'] == "belum_login"){ ?>
+        <div class="col-md-12">
+          <div class="card bg-gradient-info">
+            <!-- /.card-header -->
+            <div class="card-body text-center">
+              Anda harus login untuk mengakses halaman pengaduan atau anda bisa mendaftar untuk membuat akun
+            </div>
+            <!-- /.card-body -->
+          </div>
+          <!-- /.card -->
+        </div>
+        <?php } } ?>
+        <br>
+        <form action="cek_login_masyarakat.php" method="post">
           <div class="input-group mb-3">
             <input type="text" name="username" class="form-control" placeholder="Username">
             <div class="input-group-append">
+              <div class="input-group-text">
+                <span class="fas fa-user"></span>
+              </div>
             </div>
           </div>
           <div class="input-group mb-3">
             <input type="password" name="password" class="form-control" placeholder="Password">
             <div class="input-group-append">
-            </div>
-          </div>
-          <div class="input-group mb-3">
-            <input type="text" name="telp" class="form-control" placeholder="Telepon">
-            <div class="input-group-append">
+              <div class="input-group-text">
+                <span class="fas fa-lock"></span>
+              </div>
             </div>
           </div>
           <div class="row">
             <div class="col-8">
-              <a href="log.php" class="text-center">Sudah Punya Akun</a>
+              <a href="daftar.php" class="text-center">Daftar Pengguna Baru</a>
             </div>
             <!-- /.col -->
             <div class="col-4">
-              <button type="submit" class="btn btn-primary btn-block">Daftar</button>
+              <button type="submit" class="btn btn-primary btn-block">Masuk</button>
             </div>
             <!-- /.col -->
           </div>

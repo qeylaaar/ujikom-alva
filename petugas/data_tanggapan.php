@@ -52,9 +52,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <li class="nav-item">
               <a href="data_tanggapan.php" class="nav-link">Data Tanggapan</a>
             </li>
-            <li class="nav-item">
-              <a href="laporan.php" class="nav-link">Generate Laporan</a>
-            </li>
           </ul>
         </div>
 
@@ -94,7 +91,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
               <div class="card card-primary card-outline">
                 <div class="card-header">
-                  <h5 class="card-title m-0">Data Pengaduan</h5>
+                  <h5 class="card-title m-0">Data Tanggapan</h5>
                 </div>
                 <div class="card-body">
                   <table class="table table-bordered">
@@ -102,17 +99,16 @@ scratch. This page gets rid of all links and provides the needed markup only.
                       <tr>
                         <th style="width: 10px">#</th>
                         <th style="width: 100px">Foto</th>                        
-                        <th>Isi Laporan</th>
-                        <th style="width: 200px">Tanggal Pengaduan</th>
-                        <th>Status Verifikasi</th>
-                        <th style="width: 150px">Aksi</th>
+                        <th>Isi Tanggapan</th>
+                        <th style="width: 200px">Tanggal Tanggapan</th>
+                        <th>Nama Petugas</th>
                       </tr>
                     </thead>
                     <tbody>
                       <?php
                       $no = 1;
                       include "../koneksi.php";
-                      $catatan    =mysqli_query($koneksi, "SELECT * FROM pengaduan");
+                      $catatan    =mysqli_query($koneksi, "SELECT * FROM tanggapan INNER JOIN pengaduan ON tanggapan.id_pengaduan = pengaduan.id_pengaduan INNER JOIN petugas ON tanggapan.id_petugas = petugas.id_petugas where level='petugas'");
                       while($d = mysqli_fetch_array($catatan)){
                         ?>
                         <tr>
@@ -121,21 +117,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             <a href="" data-toggle="modal" data-target="#modal-view-foto"><img src="../upload/<?=$d['foto']?>" width="150"></a><br>
                             <span class="text-danger text-center">Klik Untuk Melihat</span>
                           </td>
-                          <td><?=$d['isi_laporan']?></td>
-                          <td><?=$d['tgl_pengaduan']?></td>
-                          <td>
-                            <?php if ($d['status'] == '0') { ?>
-                              <span class="badge bg-warning">Menunggu</span>
-                            <?php } else if ($d['status'] == 'proses') { ?>
-                              <span class="badge bg-primary">Proses</span>
-                            <?php } else { ?>
-                              <span class="badge bg-success">Selesai</span>
-                            <?php } ?>
-                          </td>
-                          <td>
-                            <a href="" class="btn btn-info btn-sm"  data-toggle="modal" data-target="#modal-tanggapan<?php echo $d['id_pengaduan']; ?>"><i class="fas fa-edit"></i> Tanggapi</a>
-                            <!--<a href="" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></a>-->
-                          </td>
+                          <td><?=$d['tanggapan']?></td>
+                          <td><?=$d['tgl_tanggapan']?></td>
+                          <td><?=$d['nama_petugas']?></td>
                         </tr>
                         <div class="modal fade" id="modal-view-foto">
                           <div class="modal-dialog">
@@ -162,49 +146,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             </div>
                           </div>
                         </div>
-                        <div class="modal fade" id="modal-tanggapan<?php echo $d['id_pengaduan']; ?>">
-                          <div class="modal-dialog">
-                            <div class="modal-content">
-                              <div class="modal-header">
-                                <h4 class="modal-title">Verifikasi dan Isi Tanggapan</h4>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                  <span aria-hidden="true">&times;</span>
-                                </button>
-                              </div>
-                              <div class="modal-body">
-                                <form method="post" action="simpan_tanggapan.php">
-                                  <div class="card-body">
-                                    <input type="text" name="id_pengaduan" value="<?=$d['id_pengaduan']?>" hidden>
-                                    <?php
-                                    include "../koneksi.php";
-                                    $petugas_login    =mysqli_query($koneksi, "SELECT * FROM petugas WHERE username='$_SESSION[username]'");
-                                    $petugas_login    =mysqli_fetch_array($petugas_login);
-                                    ?>
-                                    <input type="text" name="id_petugas" value="<?=$petugas_login['id_petugas']?>" class="form-control" hidden>                                    
-                                    <div class="form-group">
-                                      <label>Verifikasi</label>
-                                      <select class="form-control" name="status">
-                                        <option value="proses">Proses</option>
-                                        <option value="selesai">Selesai</option>
-                                      </select>
-                                    </div>
-                                    <div class="form-group">
-                                      <label>Isi Tanggapan</label>
-                                      <textarea class="form-control" name="laporan" rows="3" placeholder="Enter ..."></textarea>
-                                    </div>                          
-                                  </div>                                  
-                                </div>
-                                <div class="modal-footer justify-content-between">
-                                  <button type="button" class="btn btn-default" data-dismiss="modal">Keluar</button>
-                                  <button type="submit" class="btn btn-primary">Simpan</button>
-                                </div>
-                              </form>
-                            </div>
-                          </div>
-                        </div>
                         <?php 
                       }
-                      ?>                       
+                      ?>
                     </tbody>
                   </table>                  
                 </div>
